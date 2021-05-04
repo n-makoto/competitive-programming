@@ -1,29 +1,21 @@
+// 文字列の回文判定
+// 文字列の反転
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
  
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
+  string S;
+  cin >> S;
+  // Sが奇数個の文字の場合、中心を削除しておく
+  if(S.size() % 2 != 0){
+    S = S.erase(S.size()/2, 1);
   }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
+  string back_S = S;
+  reverse(back_S.begin(), back_S.end());
+  int ans = 0;
+  for(int i = 0; i < S.size()/2; i++){
+    if(S.at(i) != back_S.at(i)) ans++;
   }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  cout << ans << endl;
 }

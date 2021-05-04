@@ -3,27 +3,32 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
  
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
+  int N, W; // N個の整数, 総和はW
+  cin >> N >> W;
+  vector<int> a(N);
+  for(int i = 0; i < N; i++){
+    cin >> a[i];
   }
 
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
+  // bit全探索
+  bool exist = false;
+  // 1 << Nは組み合わせの総数であるところの2^Nになる。N = 3であれば8。
+  // 全組み合わせを順になめていくので、0から1 << Nの前まで繰り返すことでそれを実現している。
+  for(int bit = 0; bit < (1 << N) ; bit++) {
+    vector<int> S;
+    for(int i = 0; i < N; i++){
+      if(bit & (1 << i)){
+        S.push_back(i);
+      }
+    }
+    // ここまでで、Sには今回の組み合わせ（厳密にいえばaの添え字の組み合わせ）が格納されているので
+    // あとは愚直に足し合わせればOK
+    int sum = 0;
+    for(int i : S) sum += a[i];
+    // 判定
+    if(sum == W) exist = true;
   }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+
+  if (exist) cout << "Yes" << endl;
+  else cout << "No" << endl;
 }

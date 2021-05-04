@@ -3,27 +3,15 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
  
 int main() {
-  // 1行に1要素
   int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
+  string S;
+  cin >> N >> S;
+  int ans = 0;
+  for(int i = 2; i < N; i++){
+    // C++のsubstrは開始位置とサイズを渡すことに注意！第２引数が終了位置ではない
+    if(S.substr(i-2, 3) == "ABC"){
+      ans++;
+    }
   }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
-  }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  cout << ans << endl;
 }

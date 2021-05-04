@@ -3,27 +3,22 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
  
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
+  int N, K, M;
+  cin >> N >> K >> M;
+  vector<int> A(N);
+  rep(i, N-1){
+    cin >> A[i];
   }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
+  int target_total = M * N;
+  int current_total = 0;
+  rep(i, A.size()){
+    current_total += A[i];
   }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
+  int ans = target_total - current_total;
+  if(ans < 0) ans = 0;
+  if (ans > K) {
+    cout << -1 << endl;
+  }else {
+    cout << ans << endl;
   }
-  cout << vec.back() << endl;
 }

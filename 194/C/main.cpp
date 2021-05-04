@@ -6,24 +6,17 @@ int main() {
   // 1行に1要素
   int N;
   cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
   // N個からなるベクトル
   vector<int> vec(N);
   rep(i, N) {
     cin >> vec.at(i);
   }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
+  int ans = 0;
+  for(int i = 1; i < N; i++){
+    for(int j = i-1; j < N; j++){
+      cout << "vec[i]: " << vec[i] << "vec[j]: " << vec[j] << endl;
+      ans += pow((vec[i] - vec[j]), 2);
+    }
   }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  cout << ans << endl;
 }

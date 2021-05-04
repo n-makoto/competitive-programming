@@ -3,27 +3,17 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
  
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
+  int A, B, K;
+  cin >> A >> B >> K;
+  int c = min(A,B);
+  vector<int> yakusuu;
+  for(int i = c; i > 0; i--){
+    if (A%i == 0 && B%i == 0) {
+      yakusuu.push_back(i);
+    }
   }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
-  }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  // rep(i, yakusuu.size()) {
+  //   cout << yakusuu.at(i) << endl;
+  // }
+  cout << yakusuu.at(K - 1) << endl;
 }
