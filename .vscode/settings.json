@@ -7,7 +7,8 @@
         "sstream": "cpp",
         "regex": "cpp",
         "bitset": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "cmath": "cpp"
     },
     "cSpell.words": [
         "yakusuu"
