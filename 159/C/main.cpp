@@ -1,29 +1,15 @@
+// 計算結果をなるべく整数で持っておきたいので、最大で1000 * 1000 * 1000となり10^9のxをlong long 型であらわしつつ、
+// それを割った結果を整数ではなくdouble型として入れ込むために、27のあとにドットを打つことで小数点まで計算させるテク
+// テクいね〜
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
+typedef long long ll;
  
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
-  }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
-  }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  int L;
+  cin >> L;
+  ll x = L * L * L;
+  double ans = x / 27.;
+  cout << fixed << setprecision(12) << ans << endl;
 }

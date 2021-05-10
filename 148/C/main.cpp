@@ -1,29 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
- 
+typedef long long ll;
+
+// https://sash.netlify.app/post/cpp-euclidean-algorithm/
+// 最大公約数
+ll gcd(ll a, ll b) { 
+  if (b == 0) return a;
+  return gcd(b, a % b);
+}
+// 最小公倍数
+ll lcm(ll a, ll b) { 
+  return a*b / gcd(a, b);
+}
+
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
   int A, B;
   cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
-  }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
-  }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  cout << lcm((ll)A, (ll)B) << endl;
 }
