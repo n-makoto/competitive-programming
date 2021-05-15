@@ -1,29 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
+typedef long long ll;
  
 int main() {
-  // 1行に1要素
   int N;
   cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
+
+  vector<int> v(N);
   rep(i, N) {
-    cin >> vec.at(i);
+    cin >> v.at(i);
   }
 
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
+  sort(v.begin(), v.end());
+  double ans = (v.at(0) + v.at(1))/2.;
+  if(N > 2) {
+    for(int i = 2; i < N; i++){
+      ans = (v.at(i) + ans) / 2.;
+    }
   }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  cout << fixed << setprecision(5) << ans << endl;
 }
