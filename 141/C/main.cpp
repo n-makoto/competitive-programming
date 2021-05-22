@@ -1,29 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
+typedef long long ll;
  
 int main() {
-  // 1行に1要素
-  int N;
-  cin >> N;
-  // 1行にスペース区切りで複数
-  int A, B;
-  cin >> A >> B;
-  // N個からなるベクトル
-  vector<int> vec(N);
-  rep(i, N) {
-    cin >> vec.at(i);
+  string S;
+  cin >> S;
+  string ans = "Yes";
+  for(int i = 0; i < S.size(); i++) {
+    if((i+1) % 2 == 0){
+      if(S[i] != 'L' && S[i] != 'U' && S[i] != 'D') ans = "No";
+    }else {
+      if(S[i] != 'R' && S[i] != 'U' && S[i] != 'D') ans = "No"; 
+    }
   }
-
-  // 一般的な出力
-  cout << N <<endl;
-  // ベクトルを改行区切りで出力
-  for(auto v: vec) {
-    cout << v << endl;
-  }
-  // ベクトルをスペース区切りで出力
-  rep(i, vec.size()-1) {
-    cout << vec.at(i) << " ";
-  }
-  cout << vec.back() << endl;
+  cout << ans << endl;
 }
